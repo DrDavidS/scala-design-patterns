@@ -16,7 +16,7 @@ object ModuleDemo extends AlarmUser with TickUser {
   def main(args: Array[String]): Unit = {
     println("Running the ticker. Should trigger the alarm every 10 times.")
     (1 to 100).foreach {
-      _ =>
+      _: Int =>
         ticker.tick()  // 秒钟+1
         alarm.trigger()
     }
