@@ -13,7 +13,7 @@ ThisBuild / organization := "com.DavidYang"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "ScalaPro",
+    name := "scala-design-patterns",
     version := "1.0",
     scalaVersion := "2.12.15"
   )
