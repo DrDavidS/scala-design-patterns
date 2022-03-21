@@ -12,13 +12,17 @@ trait Adder[T] {
 object Adder {
   def sum[T: Adder](a: T, b: T): T = implicitly[Adder[T]].sum(a, b)
 
-  implicit val int2Adder: Adder[Int] = new Adder[Int] {
-    override def sum(a: Int, b: Int): Int = a + b
-  }
+  //  implicit val int2Adder: Adder[Int] = new Adder[Int] {
+  //    override def sum(a: Int, b: Int): Int = a + b
+  //  }
 
   // same implementation as above, but allowed when the trait has a single method
   implicit val string2Adder: Adder[String] =
     (a: String, b: String) => s"$a concatenated with $b"
+
+  // 实际上我们可以用更智能的方式去做，可以自动识别整形和浮点数
+  implicit def numeric2Adder[T: Numeric]: Adder[T] =
+    (a: T, b: T) => implicitly[Numeric[T]].plus(a, b)
 }
 
 object AdhocPolymorphismExample {
@@ -28,7 +32,8 @@ object AdhocPolymorphismExample {
   // 我们的代码是不知道怎么自动将 int 或者 string 转换为 Adder[Int] 或者 Adder[String].
   // 所以需要在上面的 Adder 里面写明白
   def main(args: Array[String]): Unit = {
-    System.out.println(s"The sum of 1 + 2 is ${sum(1, 2)}")
-    System.out.println(s"The sum of abc + def is ${sum("abc", "def")}")
+    println(s"The sum of 1 + 2 is ${sum(1, 2)}")
+    println(s"The sum of abc + def is ${sum("abc", "def")}")
+    println(s"The sum of 1.2 + 6.5 is ${sum(1.2, 6.5)}")
   }
 }
