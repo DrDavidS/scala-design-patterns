@@ -1,8 +1,9 @@
 libraryDependencies ++= Seq(
   "org.apache.spark" % "spark-core_2.12" % "3.2.1",
-  "org.apache.spark" % "spark-graphx_2.12" % "3.2.1"
+  "org.apache.spark" % "spark-graphx_2.12" % "3.2.1",
+  "org.json4s" %% "json4s-jackson" % "4.0.4",
+  // "org.json4s" %% "json4s-jackson" % "3.6.0-M2"
 )
-
 
 
 ThisBuild / version := "0.1.0-SNAPSHOT"
