@@ -3,6 +3,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" % "spark-graphx_2.12" % "3.2.1",
   "org.json4s" %% "json4s-jackson" % "4.0.4",
   // "org.json4s" %% "json4s-jackson" % "3.6.0-M2"
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.4"
 )
 
 

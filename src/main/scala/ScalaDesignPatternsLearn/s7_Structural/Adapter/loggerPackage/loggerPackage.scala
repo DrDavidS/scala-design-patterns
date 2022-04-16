@@ -1,7 +1,7 @@
-package ScalaDesignPatternsLearn.s7_Structural
+package ScalaDesignPatternsLearn.s7_Structural.Adapter
 
 // 包对象
-package object Adapter {
+package object loggerPackage {
   implicit class FinalAppLoggerImplicit(logger: FinalLogger) extends Log {
     override def info(message: String): Unit = logger.log(message, "info")
 
